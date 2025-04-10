@@ -17,7 +17,7 @@ CORS(app)
 
 
 # --------------------------- CONFIGURAÇÕES ---------------------------
-MODEL_PATH = "model/crackDetect50epoch.pt"
+MODEL_PATH = "app/crackDetect50epoch.pt"
 IMAGE_DIR = "static/images"
 UPLOAD_DIR = "static/uploads"
 DETECTED_DIR = "static/detected"
