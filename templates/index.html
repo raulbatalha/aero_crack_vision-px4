@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Central de Inspeção - Drone Civil</title>
+  <link href="https://fonts.googleapis.com/css2?family=Orbitron&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+<div id="alerta-visual"></div>
+<div class="dashboard">
+  <div id="drone-viewport">
+    <div id="top-panel-sim">
+      <div class="icons-bar">
+        <span class="label">CNN</span>
+        <span class="label">IFAM</span>
+        <div class="led green"></div>
+        <div class="led red"></div>
+      </div>
+    </div>
+    
+    <div id="camera-feed">
+      <img id="droneImage" src="{{ url_for('static', filename='images/drone.png') }}" alt="Camera do Drone">
+    </div>
+
+    <div id="control-panel">
+      <button onclick="document.getElementById('file').click()">⬆️ Enviar imagem</button>
+      <input type="file" id="file" style="display:none" accept="image/*" onchange="uploadImage()">
+      <button onclick="ativarCameraAoVivo()">🎥 Câmera ao vivo</button>
+      
+      <button onclick="ativarDeteccaoTempoReal()">🎥 Ativar Detecção em Tempo Real</button>
+      <button onclick="pararDeteccaoTempoReal()">⛔ Parar Detecção</button>
+      
+      <button onclick="captureFrame()">📸 Capturar da câmera</button>
+      <button onclick="analyzeCurrent()">📡 Analisar</button>
+      <button id="download-btn" style="display:none">⬇️ Relatório</button>
+      <button onclick="window.open('/history', '_blank')">📊 Ver Gráfico</button>
+      <button onclick="window.open('/csv', '_blank')">📂 Exportar CSV</button>
+    </div>
+  </div>
+
+  <div id="hud">
+    <div class="hud-box">
+      <h3>Status</h3>
+      <p id="status">🛠️ Pronto</p>
+    </div>
+    <div class="hud-box">
+      <h3>Resultado</h3>
+      <p id="result-log">🔍 Aguardando análise...</p>
+      <img id="report-preview" alt="Prévia do Relatório">
+    </div>
+    <div class="hud-box">
+      <h3>GPS / Altitude</h3>
+      <p id="gps">📍 --</p>
+      <p id="altitude">🛫 --</p>
+    </div>
+    <div class="hud-box" id="indicadores-box">
+      <h3>Indicadores</h3>
+      <p id="temp">🌡️ Temp: --</p>
+      <p id="wind">💨 Vel: --</p>
+      <p id="dist">📏 Dist: --</p>
+    </div>
+  </div>
+</div>
+<script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html>
