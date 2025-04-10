@@ -260,5 +260,5 @@ def plot_history():
     return send_file(img, mimetype='image/png')
 
 # --------------------------- INICIAR SERVIDOR ---------------------------
-if __name__ == "__main__":
-    app.run(debug=True)
+#if __name__ == "__main__":
+#    app.run(debug=True)
